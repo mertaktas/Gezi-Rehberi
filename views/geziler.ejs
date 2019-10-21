@@ -1,3 +1,5 @@
+<% include partials/header %>
+
 <h2>Gezi Resimleri</h2>
 
 <% geziler.forEach(function(gezi){ %>
@@ -6,3 +8,5 @@
     <img src="<%= gezi.image %>" alt="">
 </div>
 <% }); %>
+
+<% include partials/footer %>
