@@ -1,13 +1,16 @@
 <% include partials/header %>
 
-<h2>Gezi Resimleri</h2>
+<div class="container">
+    <h2>Gezi Resimleri</h2>
 
-<% travels.forEach(function(travel){ %>
-<div>
-    <h4><%= travel.name %></h4>
-    <img src="<%= travel.image %>" alt="">
+    <% travels.forEach(function(travel){ %>
+    <div>
+        <h4><%= travel.name %></h4>
+        <img src="<%= travel.image %>" alt="">
+    </div>
+    <a href="/travels/<%= travel._id %>">More info</a>
+    <% }); %>
+
 </div>
-<a href="/travels/<%= travel._id %>">More info</a>
-<% }); %>
 
 <% include partials/footer %>
