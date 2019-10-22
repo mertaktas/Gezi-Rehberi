@@ -8,9 +8,15 @@
     <img src="<%= travel.image %>" alt="">
 
     <p><%= travel.description %></p>
+    <p>
+        <a class="btn btn-success" href="/travels/<%= travel._id %>/comments/new">Add New Comment</a>
+    </p>
 
     <% travel.comments.forEach(function(comment){ %>
-    <p><strong><%= comment.author %></strong> - <%= comment.text %></p>
+    <p>
+        <strong><%= comment.author %></strong> - <%= comment.text %>
+    </p>
+
     <% }) %>
 
 </div>

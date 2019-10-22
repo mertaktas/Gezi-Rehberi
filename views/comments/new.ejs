@@ -1,1 +1,12 @@
-<h1>Hellooo</h1>
+<% include ../partials/header %>
+
+<div class="container">
+    <h2>Yeni Yorum oluştur. <%= travel.name %></h2>
+    <form action="/travels/<%= travel._id %>/comments" method="POST">
+        <input type="text" name="comment[author]" placeholder="author">
+        <input type="text" name="comment[text]" placeholder="text">
+        <button>Gönder</button>
+    </form>
+</div>
+
+<% include ../partials/footer %>
