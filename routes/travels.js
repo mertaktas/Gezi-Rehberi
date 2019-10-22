@@ -18,14 +18,19 @@ router.get("/", function (req, res) {
 });
 
 // CREATE - add new travel
-router.post("/", function (req, res) {
+router.post("/", isLoggedIn, function (req, res) {
     var name = req.body.name;
     var image = req.body.image;
     var desc = req.body.description;
+    var author = {
+        id: req.user._id,
+        username: req.user.username
+    }
     var newTravel = {
         name: name,
         image: image,
-        description: desc
+        description: desc,
+        author: author
     }
     Travel.create(newTravel, function (err, newlyCreated) {
         if (err) {
@@ -38,7 +43,7 @@ router.post("/", function (req, res) {
 
 
 // NEW - show form to create new travel
-router.get("/new", function (req, res) {
+router.get("/new", isLoggedIn, function (req, res) {
     res.render("travels/new");
 });
 
@@ -54,5 +59,13 @@ router.get("/:id", function (req, res) {
         }
     })
 });
+
+//middleware
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect("/login");
+}
 
 module.exports = router;

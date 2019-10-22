@@ -8,14 +8,16 @@
     <img src="<%= travel.image %>" alt="">
 
     <p><%= travel.description %></p>
+    <p><em>Submitted By : <%= travel.author.username %> </em></p>
     <p>
         <a class="btn btn-success" href="/travels/<%= travel._id %>/comments/new">Add New Comment</a>
     </p>
 
     <% travel.comments.forEach(function(comment){ %>
     <p>
-        <strong><%= comment.author %></strong> - <%= comment.text %>
+        <strong><%= comment.author.username %></strong> - <%= comment.text %>
     </p>
+
 
     <% }) %>
 
