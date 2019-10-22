@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <h2>Edit : <%= travel.name %></h2>
+    <form action="/travels/<%= travel._id %>?_method=PUT" method="POST">
+        <input type="text" name="travel[name]" value="<%= travel.name %>">
+        <input type="text" name="travel[image]" value="<%= travel.image %>">
+        <input type="text" name="travel[description]" value="<%= travel.description %>">
+        <button>Gönder</button>
+    </form>
+</div>
+
+<% include ../partials/footer %>

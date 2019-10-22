@@ -10,6 +10,7 @@
     <p><%= travel.description %></p>
     <p><em>Submitted By : <%= travel.author.username %> </em></p>
     <p>
+        <a class="btn btn-warning" href="/travels/<%= travel._id %>/edit">Edit</a>
         <a class="btn btn-success" href="/travels/<%= travel._id %>/comments/new">Add New Comment</a>
     </p>
 

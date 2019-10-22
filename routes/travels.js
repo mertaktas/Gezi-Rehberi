@@ -60,6 +60,32 @@ router.get("/:id", function (req, res) {
     })
 });
 
+// EDIT - Travel Route
+router.get("/:id/edit", function (req, res) {
+    Travel.findById(req.params.id, function (err, foundTravel) {
+        if (err) {
+            res.redirect("/travels")
+        } else {
+            res.render("travels/edit", {
+                travel: foundTravel
+            });
+        }
+    });
+
+});
+// UPDATE - Travel Route
+
+router.put("/:id", function (req, res) {
+
+    Travel.findByIdAndUpdate(req.params.id, req.body.travel, function (err, updatedTravel) {
+        if (err) {
+            res.redirect("/travels");
+        } else {
+            res.redirect("/travels/" + req.params.id);
+        }
+    });
+});
+
 //middleware
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
