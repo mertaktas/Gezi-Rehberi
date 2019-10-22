@@ -1,7 +1,12 @@
 var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
-    mongoose = require("mongoose");
+    mongoose = require("mongoose"),
+    Travel = require("./models/travel"),
+    Comment = require("./models/comment"),
+    User = require("./models/user"),
+    seedDB = require("./seeds")
+
 
 // APP CONFIG
 mongoose.connect("mongodb://localhost:27017/gezinfo", {
@@ -12,14 +17,8 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.set("view engine", "ejs");
+seedDB();
 
-// SCHEMA SETUP
-var travelSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String
-});
-var Travel = mongoose.model("Travel", travelSchema);
 
 
 app.get("/", function (req, res) {
@@ -64,7 +63,7 @@ app.get("/travels/new", function (req, res) {
 
 // SHOW 
 app.get("/travels/:id", function (req, res) {
-    Travel.findById(req.params.id, function (err, foundTravel) {
+    Travel.findById(req.params.id).populate("comments").exec(function (err, foundTravel) {
         if (err) {
             console.log(err);
         } else {

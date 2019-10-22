@@ -1,0 +1,12 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <h2>Yeni gezi oluştur.</h2>
+    <form action="/travels" method="POST">
+        <input type="text" name="name" placeholder="name">
+        <input type="text" name="image" placeholder="image">
+        <button>Gönder</button>
+    </form>
+</div>
+
+<% include ../partials/footer %>

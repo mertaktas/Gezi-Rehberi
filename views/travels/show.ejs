@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ../partials/header %>
 
 <div class="container">
     <h1>This is the show page</h1>
@@ -10,13 +10,10 @@
     <p><%= travel.description %></p>
 
     <% travel.comments.forEach(function(comment){ %>
-    <p>
-        <strong><%= comment.author %></strong> - <%= comment.text %>
-    </p>
-
+    <p><strong><%= comment.author %></strong> - <%= comment.text %></p>
     <% }) %>
 
 </div>
 
 
-<% include partials/footer %>
+<% include ../partials/footer %>
