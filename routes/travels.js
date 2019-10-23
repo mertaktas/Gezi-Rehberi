@@ -61,7 +61,7 @@ router.get("/:id", function (req, res) {
 });
 
 // EDIT - Travel Route
-router.get("/:id/edit", checkCampgroundOwnership, function (req, res) {
+router.get("/:id/edit", checkTravelOwnership, function (req, res) {
     Travel.findById(req.params.id, function (err, foundTravel) {
         if (err) {
             res.redirect("/travels")
@@ -75,7 +75,7 @@ router.get("/:id/edit", checkCampgroundOwnership, function (req, res) {
 });
 // UPDATE - Travel Route
 
-router.put("/:id", checkCampgroundOwnership, function (req, res) {
+router.put("/:id", checkTravelOwnership, function (req, res) {
 
     Travel.findByIdAndUpdate(req.params.id, req.body.travel, function (err, updatedTravel) {
         if (err) {
@@ -87,7 +87,7 @@ router.put("/:id", checkCampgroundOwnership, function (req, res) {
 });
 
 // DESTROY - Travel Route
-router.delete("/:id", checkCampgroundOwnership, function (req, res) {
+router.delete("/:id", checkTravelOwnership, function (req, res) {
     Travel.findByIdAndRemove(req.params.id, function (err) {
         if (err) {
             res.redirect("/travels");
@@ -97,13 +97,13 @@ router.delete("/:id", checkCampgroundOwnership, function (req, res) {
     })
 });
 
-function checkCampgroundOwnership(req, res, next) {
+function checkTravelOwnership(req, res, next) {
     if (req.isAuthenticated()) {
         Travel.findById(req.params.id, function (err, foundTravel) {
             if (err) {
                 res.redirect("back");
             } else {
-                // does user own the campground?
+                // does user own the travel?
                 if (foundTravel.author.id.equals(req.user._id)) {
                     next();
                 } else {
