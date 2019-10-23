@@ -9,10 +9,14 @@
 
     <p><%= travel.description %></p>
     <p><em>Submitted By : <%= travel.author.username %> </em></p>
-    <p>
+    <div>
         <a class="btn btn-warning" href="/travels/<%= travel._id %>/edit">Edit</a>
+        <form action="/travels/<%= travel._id %>?_method=DELETE" method="post">
+            <button class="btn btn-danger">Delete</button>
+        </form>
         <a class="btn btn-success" href="/travels/<%= travel._id %>/comments/new">Add New Comment</a>
-    </p>
+    </div>
+
 
     <% travel.comments.forEach(function(comment){ %>
     <p>
