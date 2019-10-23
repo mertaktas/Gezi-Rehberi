@@ -23,7 +23,13 @@
     <% travel.comments.forEach(function(comment){ %>
     <p>
         <strong><%= comment.author.username %></strong> - <%= comment.text %>
+        <% if(currentUser && comment.author.id && comment.author.id.equals(currentUser._id)){ %>
         <a class="btn btn-xs btn-warning" href="/travels/<%=travel._id %>/comments/<%=comment._id %>/edit">Edit</a>
+        <form id="delete-form" action="/travels/<%=travel._id %>/comments/<%=comment._id %>?_method=DELETE"
+            method="POST">
+            <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+        </form>
+        <% } %>
     </p>
 
 
