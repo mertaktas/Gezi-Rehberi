@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Travel = require("../models/travel");
+var middleware = require("../middleware");
 
 
 // INDEX - show all travels
@@ -18,7 +19,7 @@ router.get("/", function (req, res) {
 });
 
 // CREATE - add new travel
-router.post("/", isLoggedIn, function (req, res) {
+router.post("/", middleware.isLoggedIn, function (req, res) {
     var name = req.body.name;
     var image = req.body.image;
     var desc = req.body.description;
@@ -43,7 +44,7 @@ router.post("/", isLoggedIn, function (req, res) {
 
 
 // NEW - show form to create new travel
-router.get("/new", isLoggedIn, function (req, res) {
+router.get("/new", middleware.isLoggedIn, function (req, res) {
     res.render("travels/new");
 });
 
@@ -61,7 +62,7 @@ router.get("/:id", function (req, res) {
 });
 
 // EDIT - Travel Route
-router.get("/:id/edit", checkTravelOwnership, function (req, res) {
+router.get("/:id/edit", middleware.checkTravelOwnership, function (req, res) {
     Travel.findById(req.params.id, function (err, foundTravel) {
         if (err) {
             res.redirect("/travels")
@@ -73,9 +74,9 @@ router.get("/:id/edit", checkTravelOwnership, function (req, res) {
     });
 
 });
-// UPDATE - Travel Route
 
-router.put("/:id", checkTravelOwnership, function (req, res) {
+// UPDATE - Travel Route
+router.put("/:id", middleware.checkTravelOwnership, function (req, res) {
 
     Travel.findByIdAndUpdate(req.params.id, req.body.travel, function (err, updatedTravel) {
         if (err) {
@@ -87,7 +88,7 @@ router.put("/:id", checkTravelOwnership, function (req, res) {
 });
 
 // DESTROY - Travel Route
-router.delete("/:id", checkTravelOwnership, function (req, res) {
+router.delete("/:id", middleware.checkTravelOwnership, function (req, res) {
     Travel.findByIdAndRemove(req.params.id, function (err) {
         if (err) {
             res.redirect("/travels");
@@ -97,32 +98,5 @@ router.delete("/:id", checkTravelOwnership, function (req, res) {
     })
 });
 
-function checkTravelOwnership(req, res, next) {
-    if (req.isAuthenticated()) {
-        Travel.findById(req.params.id, function (err, foundTravel) {
-            if (err) {
-                res.redirect("back");
-            } else {
-                // does user own the travel?
-                if (foundTravel.author.id.equals(req.user._id)) {
-                    next();
-                } else {
-
-                    res.redirect("back");
-                }
-            }
-        });
-    } else {
-        res.redirect("back");
-    }
-}
-
-//middleware
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect("/login");
-}
 
 module.exports = router;
