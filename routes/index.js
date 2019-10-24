@@ -22,9 +22,11 @@ router.post("/register", function (req, res) {
     User.register(newUser, req.body.password, function (err, user) {
         if (err) {
             console.log(err);
+            req.flash("error", err.message);
             return res.render("register");
         }
         passport.authenticate("local")(req, res, function () {
+            req.flash("success", "gezinFO'\ya hoşgeldin " + user.username);
             res.redirect("/travels");
         });
     });
@@ -33,25 +35,21 @@ router.post("/register", function (req, res) {
 // show login form
 router.get("/login", function (req, res) {
     res.render("login");
+
 });
 
 // handling login logic
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/travels",
-    failureRedirect: "/login"
+    failureRedirect: "/login",
 }), function (req, res) {});
 
 // logic route
 router.get("/logout", function (req, res) {
     req.logout();
+    req.flash("success", "Tekrar görüşmek dileğiyle " + user.username);
     res.redirect("/travels");
 });
 
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect("/login");
-}
 
 module.exports = router;
