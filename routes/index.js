@@ -26,7 +26,7 @@ router.post("/register", function (req, res) {
             return res.render("register");
         }
         passport.authenticate("local")(req, res, function () {
-            req.flash("success", "gezinFO'\ya hoşgeldin " + user.username);
+            req.flash("success", "GezinFO'ya hoşgeldin " + user.username);
             res.redirect("/travels");
         });
     });
