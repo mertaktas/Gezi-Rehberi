@@ -17,10 +17,12 @@
                     </p>
                 </div>
                 <% if(currentUser && travel.author.id && travel.author.id.equals(currentUser._id)){ %>
-                <a class="btn btn-xs btn-warning" href="/travels/<%= travel._id %>/edit">Düzenle</a>
-                <form id="delete-form" action="/travels/<%= travel._id %>?_method=DELETE" method="POST">
-                    <button class="btn btn-xs btn-danger">Sil</button>
-                </form>
+                <div class="btn-sizing">
+                    <a class="btn btn-sm btn-warning" href="/travels/<%= travel._id %>/edit">Düzenle</a>
+                    <form id="delete-form" action="/travels/<%= travel._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-sm btn-danger">Sil</button>
+                    </form>
+                </div>
                 <% }%>
             </div>
             <div class="well">
