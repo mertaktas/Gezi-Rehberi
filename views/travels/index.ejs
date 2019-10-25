@@ -1,16 +1,29 @@
 <% include ../partials/header %>
 
 <div class="container">
-    <h2>Gezi Resimleri</h2>
+    <div class="row text-center image-size ">
+        <% travels.forEach(function(travel){ %>
+        <div class="col-md-4 col-sm-6 my-3">
+            <div class="card">
+                <img src="<%= travel.image %>">
 
-    <% travels.forEach(function(travel){ %>
-    <div>
-        <h4><%= travel.name %></h4>
-        <img src="<%= travel.image %>" alt="">
+                <div class="card-header my-2">
+                    <h4><%= travel.name %></h4>
+                </div>
+                <div class="card-paragraph">
+                    <p>
+                        <%= travel.description %>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <a type="button" href="/travels/<%= travel._id %>" class="btn btn-dark card-more">More Info</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <% }); %>
     </div>
-    <a href="/travels/<%= travel._id %>">More info</a>
-    <% }); %>
-
 </div>
 
 <% include ../partials/footer %>
