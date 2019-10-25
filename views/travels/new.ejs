@@ -1,13 +1,24 @@
 <% include ../partials/header %>
 
-<div class="container">
-    <h2>Yeni gezi oluştur.</h2>
-    <form action="/travels" method="POST">
-        <input type="text" name="name" placeholder="name">
-        <input type="text" name="image" placeholder="image">
-        <input type="text" name="description" placeholder="description">
-        <button>Gönder</button>
-    </form>
-</div>
+<form style=" height: 50vh; width: 50vh; margin-top: 10%; display: block;
+margin-left: auto;
+margin-right: auto;" action="/travels" method="POST">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Başlık</label>
+        <input class="form-control" type="text" name="name" placeholder="isim">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Bir resim adresi giriniz</label>
+        <input class="form-control" type="text" name="image" placeholder="resim url">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Açıklama</label>
+        <textarea class="form-control" type="text" name="description" placeholder="açıklama"></textarea>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-lg btn-primary btn-block">Gönder</button>
+    </div>
+</form>
 
 <% include ../partials/footer %>
