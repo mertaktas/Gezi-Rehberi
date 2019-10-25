@@ -25,12 +25,6 @@
     width: 100%;
 }
 
-.card-paragraph p {
-    padding: 0 2px 0 2px;
-    height: 50px;
-    overflow: hidden;
-    font-size: 0.7rem;
-}
 
 .card-more p {
     width: 1.5rem;
