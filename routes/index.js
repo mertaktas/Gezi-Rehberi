@@ -47,7 +47,7 @@ router.post("/login", passport.authenticate("local", {
 // logic route
 router.get("/logout", function (req, res) {
     req.logout();
-    req.flash("success", "Tekrar görüşmek dileğiyle " + user.username);
+    req.flash("success", "Tekrar görüşmek dileğiyle");
     res.redirect("/travels");
 });
 
