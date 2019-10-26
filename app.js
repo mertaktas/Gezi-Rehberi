@@ -18,10 +18,16 @@ var commentRoutes = require("./routes/comments"),
 
 
 // APP CONFIG
-mongoose.connect("mongodb://localhost:27017/gezinfo", {
+// mongoose.connect("mongodb://localhost:27017/gezinfo", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// });
+mongoose.connect("mongodb+srv://mert:mert@cluster0-ztbim.mongodb.net/test?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
+
+
 app.use(bodyParser.urlencoded({
     extended: true
 }));
