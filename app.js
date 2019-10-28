@@ -61,6 +61,7 @@ app.use("/", indexRoutes);
 app.use("/travels", travelRoutes);
 app.use("/travels/:id/comments", commentRoutes);
 
-app.listen("3000", function () {
-    console.log("Server Çalıştı...");
+var port = process.env.PORT || 8080;
+app.listen(port, function () {
+    console.log("Server Has Started!");
 });
