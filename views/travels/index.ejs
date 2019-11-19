@@ -1,31 +1,161 @@
 <% include ../partials/header %>
 
+<div id="background" class="jumbotron">
+    <div class="container">
+        <h1 class="display-3 text-center mt-4">Gezi Rehberi</h1>
+        <p class="lead text-center mt-4">Heyecanlı anılarınızı ve çektiğiniz gezi fotoğraflarını
+            paylaşabilirsiniz.</p>
+        <p class="lead text-center mt-4">Ayrıca gezerken tanık olduğunuz anıları da paylaşmayı unutmayın.</p>
+        <p class="lead text-center mt-4">Siz de kayıt olarak aramıza katılabilirsiniz.</p>
 
-<div class="container">
-    <div class="row text-center image-size ">
-        <% travels.forEach(function(travel){ %>
-        <div class="col-md-4 col-sm-6 my-3">
-            <div class="card">
-                <img src="<%= travel.image %>">
+        <hr class="hr-jum">
+        <p class="text-center mt-4 mb-4">Hadi acele et seni bekliyoruz.</p>
+        <p class="lead text-center">
+            <a class="btn btn-primary btn-lg" href="#geziler" role="button">Devam Et</a>
+        </p>
+    </div>
+</div>
 
-                <div class="card-header my-2">
-                    <h4><%= travel.name %></h4>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-12 text-truncate">
-                        <%= travel.description %>
+<section id="geziler">
+    <div class="container">
+        <h2 class="text-center">Geziler</h2>
+        <hr class="my-4">
+
+        <div class="px-4 d-flex justify-content-center">
+            <div class="row">
+                <% travels.forEach(function(travel){ %>
+                <div class="col-4 p-4">
+                    <div class="card float-left">
+                        <h3 class="card-header text-center"><%= travel.name %></h3>
+
+                        <img style="height: 200px; width: 100%; display: block;" src="<%= travel.image %>"
+                            alt="Card image">
+                        <div class="card-body">
+                            <p class="card-text"><%= travel.description.substring(0, 100) %>....</p>
+                        </div>
+
+                        <div class="card-body">
+                            <a href="#" class="card-link">#Etiket</a>
+                            <a href="#" class="card-link">#Etiket</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            2 days ago
+                        </div>
+                        <div>
+                            <p>
+                                <a type="button" href="/travels/<%= travel._id %>"
+                                    class="btn btn-dark card-more d-flex justify-content-center mb-0">Daha
+                                    Fazlası</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <p>
-                        <a type="button" href="/travels/<%= travel._id %>" class="btn btn-dark card-more">Daha
-                            Fazlası</a>
-                    </p>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Page Content -->
+<section id="hakkimizda">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 my-4">
+                <h1 class="section-header text-center mb-4">Takımımız</h1>
+
+            </div>
+            <!-- Team Member 1 -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow">
+                    <img src="https://source.unsplash.com/TMgQMXoglsM/500x350" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Alvin Williams</h5>
+                        <div class="card-text text-black-50">Web Developer</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member 2 -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow">
+                    <img src="https://source.unsplash.com/9UVmlIb0wJU/500x350" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Walter Snyder</h5>
+                        <div class="card-text text-black-50">Web Developer</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member 3 -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow">
+                    <img src="https://source.unsplash.com/sNut2MqSmds/500x350" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Lonnie Graham</h5>
+                        <div class="card-text text-black-50">Web Developer</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member 4 -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow">
+                    <img src="https://source.unsplash.com/ZI6p3i9SbVU/500x350" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Kylie Gomez</h5>
+                        <div class="card-text text-black-50">Web Developer</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <% }); %>
+        <!-- /.row -->
     </div>
-</div>
+</section>
+<!-- /.container -->
+
+<section id="contact" class="d-flex justify-content-center">
+    <div class="container">
+        <div style="height: 150px; border-bottom: 1px #000 solid;" class="section-content my-4 px-2">
+            <h1 class="section-header text-center">Bizimle İrtibata Geçiniz</h1>
+            <h4 class="text-center">Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry</h3>
+        </div>
+        <div class="contact-section">
+            <div class="container">
+                <form>
+                    <div class="row mb-4">
+                        <form>
+                            <div class="col-6 form-line">
+                                <div class="form-group my-4">
+                                    <label for="exampleInputUsername">Ad Soyad</label>
+                                    <input type="text" class="form-control" id="" placeholder="Ad Soyad">
+                                </div>
+                                <div class="form-group my-4">
+                                    <label for="exampleInputEmail">Email</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail"
+                                        placeholder="Email Giriniz">
+                                </div>
+                                <div class="form-group my-4">
+                                    <label for="telephone">Numara</label>
+                                    <input type="tel" class="form-control" id="telephone" placeholder="Numara">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group my-4">
+                                    <label for="description">İleti</label>
+                                    <textarea cols="30" rows="8" class="form-control" id="description"
+                                        placeholder="İletinizi Yazınız"></textarea>
+                                </div>
+                                <div>
+
+                                    <button type="button" class="btn btn-dark submit float-right"><i
+                                            class="fa fa-paper-plane" aria-hidden="true"></i>Gönder</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+</section>
 
 <% include ../partials/footer %>
