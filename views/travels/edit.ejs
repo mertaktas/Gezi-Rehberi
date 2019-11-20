@@ -1,8 +1,7 @@
 <% include ../partials/header %>
 
-<form style=" height: 50vh; width: 50vh; margin-top: 3%; display: block;
-margin-left: auto;
-margin-right: auto;" action="/travels/<%= travel._id %>?_method=PUT" method="POST">
+<form style=" width: 50vh; margin: 7% auto; display: block;" action="/travels/<%= travel._id %>?_method=PUT"
+    method="POST">
     <h1 style="text-align: center"><%= travel.name %> paylaşımını düzenle</h1>
     <div class="form-group">
         <label for="exampleInputEmail1">Başlık</label>
@@ -15,11 +14,12 @@ margin-right: auto;" action="/travels/<%= travel._id %>?_method=PUT" method="POS
     <div class="form-group">
         <label for="exampleInputEmail1">Açıklama</label>
 
-        <textarea class="form-control" type="text" name="travel[description]"><%= travel.description %></textarea>
+        <textarea class="form-control" type="text" name="travel[description]" rows="4"
+            cols="50"><%= travel.description %></textarea>
     </div>
 
     <div class=" form-group">
-        <button class="btn btn-lg btn-primary btn-block">Gönder</button>
+        <button class="btn btn-lg btn-primary btn-block" style="margin-top:50px">Gönder</button>
     </div>
 </form>
 <% include ../partials/footer %>

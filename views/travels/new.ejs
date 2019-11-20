@@ -1,8 +1,6 @@
 <% include ../partials/header %>
 
-<form style=" height: 50vh; width: 50vh; margin-top: 3%; display: block;
-margin-left: auto;
-margin-right: auto;" action="/travels" method="POST">
+<form style=" width: 50vh; margin: 7% auto; display: block;" action="/travels" method="POST">
     <h1 style="text-align: center">Yeni gezi paylaş</h1>
     <div class="form-group">
         <label for="exampleInputEmail1">Başlık</label>
@@ -14,11 +12,12 @@ margin-right: auto;" action="/travels" method="POST">
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Açıklama</label>
-        <textarea class="form-control" type="text" name="description" placeholder="açıklama"></textarea>
+        <textarea class="form-control" type="text" name="description" placeholder="açıklama" rows="4"
+            cols="50"></textarea>
     </div>
 
     <div class="form-group">
-        <button class="btn btn-lg btn-primary btn-block">Gönder</button>
+        <button class="btn btn-lg btn-primary btn-block" style="margin-top:50px">Gönder</button>
     </div>
 </form>
 
