@@ -8,20 +8,23 @@ var express = require("express"),
     methodOverride = require("method-override"),
     Travel = require("./models/travel"),
     Comment = require("./models/comment"),
-    User = require("./models/user"),
-    seedDB = require("./seeds")
+    User = require("./models/user")
 
+
+// Routes
 var commentRoutes = require("./routes/comments"),
     travelRoutes = require("./routes/travels"),
     indexRoutes = require("./routes/index")
 
 
 
-// APP CONFIG
+// Local Database
 // mongoose.connect("mongodb://localhost:27017/gezinfo", {
 //     useNewUrlParser: true,
 //     useUnifiedTopology: true
 // });
+
+// Public Database
 mongoose.connect("mongodb+srv://mert:mert@cluster0-ztbim.mongodb.net/test?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
