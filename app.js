@@ -10,13 +10,10 @@ var express = require("express"),
     Comment = require("./models/comment"),
     User = require("./models/user")
 
-
-// Routes
+// Routes File
 var commentRoutes = require("./routes/comments"),
     travelRoutes = require("./routes/travels"),
     indexRoutes = require("./routes/index")
-
-
 
 // Local Database
 // mongoose.connect("mongodb://localhost:27017/gezinfo", {
@@ -30,7 +27,6 @@ mongoose.connect("mongodb+srv://mert:mert@cluster0-ztbim.mongodb.net/test?retryW
     useUnifiedTopology: true
 });
 
-
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -39,9 +35,6 @@ mongoose.set('useFindAndModify', false);
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
-// seedDB();
-
-// PASSPORT CONFIG
 app.use(require("express-session")({
     secret: "pasword pasword pasword",
     resave: false,
@@ -59,7 +52,6 @@ app.use(function (req, res, next) {
     res.locals.success = req.flash("success");
     next();
 });
-
 app.use("/", indexRoutes);
 app.use("/travels", travelRoutes);
 app.use("/travels/:id/comments", commentRoutes);
