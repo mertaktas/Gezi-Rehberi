@@ -1,15 +1,15 @@
-var Travel = require("../models/travel");
-var Comment = require("../models/comment");
+const Travel = require("../models/travel"),
+    Comment = require("../models/comment");
 
 // All the Middleware
-var middlewareObj = {
+const middlewareObj = {
 
 };
 
 // Check Edit Travel
-middlewareObj.checkTravelOwnership = function (req, res, next) {
+middlewareObj.checkTravelOwnership = (req, res, next) => {
     if (req.isAuthenticated()) {
-        Travel.findById(req.params.id, function (err, foundTravel) {
+        Travel.findById(req.params.id, (err, foundTravel) => {
             if (err) {
                 res.redirect("back");
             } else {
@@ -17,24 +17,21 @@ middlewareObj.checkTravelOwnership = function (req, res, next) {
                 if (foundTravel.author.id.equals(req.user._id)) {
                     next();
                 } else {
-
                     req.flash("error", "Bunu yapma izniniz yok.");
                     res.redirect("back");
-
                 }
             }
         });
     } else {
         req.flash("error", "Giriş yapmanız gerek.");
         res.redirect("back");
-
     }
 }
 
 // Check Edit Comment
-middlewareObj.checkCommentOwnership = function (req, res, next) {
+middlewareObj.checkCommentOwnership = (req, res, next) => {
     if (req.isAuthenticated()) {
-        Comment.findById(req.params.comment_id, function (err, foundComment) {
+        Comment.findById(req.params.comment_id, (err, foundComment) => {
             if (err) {
                 res.redirect("back");
             } else {
@@ -42,28 +39,23 @@ middlewareObj.checkCommentOwnership = function (req, res, next) {
                 if (foundComment.author.id.equals(req.user._id)) {
                     next();
                 } else {
-
                     req.flash("error", "Bunu yapma izniniz yok.");
                     res.redirect("back");
-
                 }
             }
         });
     } else {
         req.flash("error", "Giriş yapmanız gerek.");
         res.redirect("back");
-
     }
 }
 
-middlewareObj.isLoggedIn = function (req, res, next) {
+middlewareObj.isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
         return next();
     }
-
     req.flash("error", "Giriş yapmanız gerek.");
     res.redirect("/login");
-
 }
 
 module.exports = middlewareObj;
