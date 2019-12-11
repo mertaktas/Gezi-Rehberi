@@ -1,4 +1,4 @@
-var express = require("express"),
+const express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
@@ -11,7 +11,7 @@ var express = require("express"),
     User = require("./models/user")
 
 // Routes File
-var commentRoutes = require("./routes/comments"),
+const commentRoutes = require("./routes/comments"),
     travelRoutes = require("./routes/travels"),
     indexRoutes = require("./routes/index")
 
@@ -46,7 +46,7 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
@@ -56,7 +56,7 @@ app.use("/", indexRoutes);
 app.use("/travels", travelRoutes);
 app.use("/travels/:id/comments", commentRoutes);
 
-var port = process.env.PORT || 8080;
-app.listen(port, function () {
-    console.log("Server Has Started!");
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+    console.log(`Server Has Started port : ${port}`);
 });
