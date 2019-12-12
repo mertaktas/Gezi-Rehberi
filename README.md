@@ -1,9 +1,9 @@
 # Gezi Paylaşma
-GezinFO gezi paylaşım platformu.
+Gezi Rehberi | Gezi Paylaşma Uygulaması
 
 ## Açıklama
 
-GezinFO, kullanıcının gezi paylaşımları yapmasına olanak sağlayan bir gezi paylaşım uygulamasıdır.
+Gezi Rehberi, kullanıcıların gezilerini paylaşmalarını sağlayan bir web uygulamasıdır.
 
 ## Yazar
 
@@ -16,7 +16,7 @@ Mert Aktaş 2019
 * [Projenin Demosu](https://gezinfo.herokuapp.com)
 
 ## Proje hakkında
-GezinFO, kullanıcının yaşamış olduğu gezi maceralarını fotoğraf açıklama ile paylaşma imkanı sağlayan bir uygulamadır.
+Gezi Rehberi, kullanıcının yaşamış olduğu gezi maceralarını fotoğraflar ve açıklamalarla paylaşma imkanı sağlayan bir uygulamadır.
 Kullanıcı gezi paylaşımı yapabilmesi için siteye kayıt olmalı ve sonrasında giriş yapmalıdır. Bu sayede istediği paylaşımı yapabilir ve devamında paylaşımını istediği vakit düzenleyebilir silebilir ve paylaşımının altına yorum yazabilir.
 
 ## Proje hedefleri
