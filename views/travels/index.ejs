@@ -28,8 +28,8 @@
         <div class="px-4 d-flex justify-content-center">
             <div class="row">
                 <% travels.forEach(function(travel){ %>
-                <div class="col-4 p-4">
-                    <div class="card float-left">
+                <div class="col-lg-4 p-4">
+                    <div class="card float-left" style="width: 100%;">
                         <h3 class="card-header text-center"><%= travel.name %></h3>
 
                         <img style="height: 200px; width: 100%; display: block;" src="<%= travel.image %>"
@@ -46,11 +46,10 @@
                             2 days ago
                         </div>
                         <div>
-                            <p>
                                 <a type="button" href="/travels/<%= travel._id %>"
                                     class="btn btn-dark card-more d-flex justify-content-center mb-0">Daha
                                     Fazlası</a>
-                            </p>
+                           
                         </div>
                     </div>
                 </div>

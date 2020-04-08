@@ -56,7 +56,7 @@ app.use("/", indexRoutes);
 app.use("/travels", travelRoutes);
 app.use("/travels/:id/comments", commentRoutes);
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
     console.log(`Server Has Started port : ${port}`);
 });
